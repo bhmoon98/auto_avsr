@@ -5,15 +5,16 @@
 # Apache 2.0  (http://www.apache.org/licenses/LICENSE-2.0)
 
 import warnings
-
-from ibug.face_alignment import FANPredictor
-from ibug.face_detection import RetinaFacePredictor
+import sys
+import os
+from preparation.tools.face_alignment.ibug.face_alignment import FANPredictor
+from preparation.tools.face_detection.ibug.face_detection import RetinaFacePredictor
 
 warnings.filterwarnings("ignore")
 
 
 class LandmarksDetector:
-    def __init__(self, device="cuda:0", model_name="resnet50"):
+    def __init__(self, device="cuda", model_name="resnet50"):
         self.face_detector = RetinaFacePredictor(
             device=device,
             threshold=0.8,
@@ -24,6 +25,7 @@ class LandmarksDetector:
     def __call__(self, video_frames):
         landmarks = []
         for frame in video_frames:
+            # 데이터 gpu로 보내기
             detected_faces = self.face_detector(frame, rgb=False)
             face_points, _ = self.landmark_detector(frame, detected_faces, rgb=True)
             if len(detected_faces) == 0:
