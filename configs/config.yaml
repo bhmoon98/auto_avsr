@@ -20,4 +20,5 @@ ckpt_path:
 pretrained_model_path:
 transfer_frontend:
 transfer_encoder:
+csv_file:
 

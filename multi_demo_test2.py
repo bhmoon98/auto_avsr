@@ -96,7 +96,7 @@ class InferencePipeline(torch.nn.Module):
 def main(cfg):
     pipeline = InferencePipeline(cfg)
     
-    file_path = "filelist.txt"
+    file_path = cfg.file_path
     file_paths = []
     with open(file_path, 'r') as f:
         for line in f:
@@ -105,7 +105,7 @@ def main(cfg):
     # file_paths = file_paths[100:-1]  # 파일 목록을 최대 100개로 제한
     print(len(file_paths))
 
-    csv_file = './test.csv'
+    csv_file = cfg.csv_file
 
     # Create or append to the CSV file
     with open(csv_file, mode='w', newline='') as file:
@@ -129,3 +129,4 @@ def main(cfg):
 
 if __name__ == "__main__":
     main()
+    
