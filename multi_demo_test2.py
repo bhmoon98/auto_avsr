@@ -95,7 +95,7 @@ class InferencePipeline(torch.nn.Module):
 @hydra.main(version_base="1.3", config_path="configs", config_name="config")
 def main(cfg):
     pipeline = InferencePipeline(cfg)
-    
+    device
     file_path = cfg.file_path
     file_paths = []
     with open(file_path, 'r') as f:

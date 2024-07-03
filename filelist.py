@@ -1,6 +1,6 @@
 import os
 
-def split_filelist(input_file, num_splits=100):
+def split_filelist(input_file, num_splits=):
     # Create directory if it does not exist
     if not os.path.exists('filelist'):
         os.makedirs('filelist')
